@@ -3,5 +3,5 @@
 集成Vitamio和ijkMediaplayer 实现万能解码，支持截取视频第一帧做封面等
 
 ### 开发平台：Android Studio 3.3 API：28
-##启动页
-![](http://www.baidu.com/img/bdlogo.gif)
+## 启动页
+![] (http://www.baidu.com/img/bdlogo.gif)
