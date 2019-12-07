@@ -4,4 +4,4 @@
 
 ### 开发平台：Android Studio 3.3 API：28
 ## 启动页
-![] (http://www.baidu.com/img/bdlogo.gif)
+![baidu](http://www.baidu.com/img/bdlogo.gif)
