@@ -1,0 +1,4 @@
+#Mon Oct 28 13:19:37 CST 2019
+base.0=E\:\\AS\\TextThread\\SurfaceViewDemo\\build\\intermediates\\transforms\\dexMerger\\debug\\3
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".TabLayout.activity.TabLayoutActivity">
+
+    <com.example.textthread.TabLayout.view.NoScrollViewPager
+        android:id="@+id/viewPager"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.example.textthread.TabLayout.view.NoScrollViewPager>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@android:color/white"
+        app:tabIndicatorColor="@android:color/transparent"
+        app:tabSelectedTextColor="@color/Pink"
+        app:tabTextColor="@android:color/darker_gray"
+        />
+    <!--app:tabIndicatorColor="@color/colorPrimaryDark"表的指针的颜色-->
+    <!--app:tabSelectedTextColor="@color/colorAccent" 表示现在时字体的颜色-->
+    <!--app:tabTextColor="#FFFFFF"表示默认时字体的颜色-->
+</LinearLayout>

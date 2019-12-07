@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GifShow">
+    <Button
+        android:id="@+id/bnt_exit"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/bnt_exit_selector"
+        android:layout_width="60dp"
+        android:layout_height="40dp" />
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/iv_image_gif"
+        android:background="@color/Pink"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ButterKnifeActivity">
+    <TextView
+        android:id="@+id/tvButterKnife"
+        android:text="ButterKnife"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+    <Button
+        android:id="@+id/bntButterKnife"
+        android:text="ButterKnife"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

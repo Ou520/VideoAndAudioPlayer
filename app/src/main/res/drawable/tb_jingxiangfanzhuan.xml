@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--true是点击显示的图案-->
+    <item android:drawable="@drawable/ic_jingxiangfanzhuan2" android:state_checked="true"/>
+    <!--false是默认，没点击时显示的图案-->
+    <item android:drawable="@drawable/ic_jingxiangfanzhuan" android:state_checked="false"/>
+</selector>

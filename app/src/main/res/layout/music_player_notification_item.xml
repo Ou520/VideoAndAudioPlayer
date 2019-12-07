@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_MusicPlay_Notification_icon"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+       android:background="@drawable/cahngpian"
+        android:layout_width="100dp"
+        android:layout_height="110dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/iv_MusicPlay_Notification_icon"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="160dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_MusicPlay_Notification_Name"
+                android:text="歌曲名"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <TextView
+                android:id="@+id/tv_MusicPlay_Notification_Artist"
+                android:layout_weight="1"
+                android:text="演唱者"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/pb_MusicPlay_Notification"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/bnt_MusicPlay_Notification_Collect"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_shouchang2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/bnt_MusicPlay_Notification_Pre"
+                android:background="@drawable/ic_pre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/bnt_MusicPlay_Notification_Start_Pause"
+                android:background="@drawable/ic_pause"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/bnt_MusicPlay_Notification_Next"
+                android:background="@drawable/ic_next"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/bnt_MusicPlay_Notification_Lyrc"
+                android:background="@drawable/ic_lyrc"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

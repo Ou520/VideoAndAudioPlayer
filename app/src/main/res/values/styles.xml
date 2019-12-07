@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/Pink</item>
+        <item name="colorPrimaryDark">@color/Pink</item>
+        <item name="colorAccent">@color/Pink</item>
+    </style>
+    <!-- PopupWindow进出动画 -->
+    <style name="PopupWindowAnimation" parent="@android:style/Animation.Dialog">
+        <!--进入的方向-->
+        <item name="android:windowEnterAnimation">@anim/popup_in</item>
+        <!--退出的方向-->
+        <item name="android:windowExitAnimation">@anim/popup_out</item>
+    </style>
+    <style name="AddDanmaku_PopupWindowAnimation" parent="@android:style/Animation.Dialog">
+        <!--进入的方向-->
+        <item name="android:windowEnterAnimation">@anim/add_danmaku_popup_in</item>
+        <!--退出的方向-->
+        <item name="android:windowExitAnimation">@anim/add_danmaku_popup_out</item>
+    </style>
+    <style name="style_RadioButton">
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@drawable/zi_ti_yanse</item>
+    </style>
+
+</resources>

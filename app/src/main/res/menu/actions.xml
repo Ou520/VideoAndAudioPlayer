@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--使用属性时报错时，要Activity的兼容问题-->
+    <item
+        android:id="@+id/add"
+        android:title="add"
+        android:icon="@drawable/ic_launcher_foreground"
+        app:showAsAction="always" />
+<!--showAsAction是item的展示方式：always是一直显示，
+                                  collapseActionView是折叠起来,
+                                  ifRoom是有多余的空间时显示出来，没有空间就折叠起来
+                                  never是永远不显示
+                                  withText是带一个文本框-->
+    <item android:id="@+id/reset" android:title="reset" app:showAsAction="always"  />
+    <item android:id="@+id/about" android:title="about"  app:showAsAction="always"/>
+
+    <item android:id="@+id/reset1"
+        android:title="reset1"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_launcher_foreground">
+        <!-- 子菜单 -->
+        <menu>
+            <item
+                android:id="@+id/setting1"
+                android:orderInCategory="300"
+                app:showAsAction="never"
+                android:title="声音設置"/>
+            <item
+                android:id="@+id/setting2"
+                android:orderInCategory="400"
+                app:showAsAction="never"
+                android:title="背景設置"/>
+        </menu>
+    </item>
+
+
+    <item android:id="@+id/reset2" android:title="reset2"  app:showAsAction="ifRoom" android:icon="@drawable/ic_launcher_foreground"/>
+    <item android:id="@+id/reset3" android:title="reset3" app:showAsAction="ifRoom" android:icon="@drawable/ic_launcher_foreground" />
+    <item android:id="@+id/reset4" android:title="reset4"  app:showAsAction="ifRoom" android:icon="@drawable/ic_launcher_foreground"/>
+    <item android:id="@+id/reset5" android:title="reset5" app:showAsAction="ifRoom" android:icon="@drawable/ic_launcher_foreground" />
+    <item android:id="@+id/reset6" android:title="reset6"  android:icon="@drawable/ic_launcher_foreground" app:showAsAction="ifRoom"/>
+</menu>

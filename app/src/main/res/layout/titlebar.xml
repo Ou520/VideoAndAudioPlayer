@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--自定义标题栏（通过反射来实现）-->
+<com.example.textthread.TitleBar.View.TitleBar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:background="#ff3097fd"
+    android:layout_height="55dp">
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:background="@mipmap/ic_launcher"
+        android:layout_width="55dp"
+        android:layout_height="55dp" />
+    <TextView
+        android:id="@+id/tv_search"
+        android:clickable="true"
+        android:text="全网搜索"
+        android:textSize="14sp"
+        android:textColor="@drawable/tv_search_text_color__selector"
+        android:background="@drawable/tv_search_bg_selector"
+        android:drawableLeft="@drawable/tv_search_drawable_selector"
+        android:layout_marginLeft="8dp"
+        android:drawablePadding="3dp"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:id="@+id/rl_game"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_game"
+            android:drawableLeft="@drawable/ic_top_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignRight="@id/tv_game"
+            android:background="@drawable/dot"
+            android:layout_width="6dp"
+            android:layout_height="6dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_download"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_download"
+            android:drawableLeft="@drawable/ic_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignRight="@id/tv_download"
+            android:background="@drawable/dot"
+            android:layout_width="6dp"
+            android:layout_height="6dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_message"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_message"
+            android:drawableLeft="@drawable/ic_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignRight="@id/tv_message"
+            android:background="@drawable/dot"
+            android:layout_width="6dp"
+            android:layout_height="6dp" />
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_selector1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/iv_redact"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_redact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</com.example.textthread.TitleBar.View.TitleBar>

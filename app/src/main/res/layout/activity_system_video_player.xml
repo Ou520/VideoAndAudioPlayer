@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rl_SystemVideoPlayer"
+        android:gravity="center"
+        android:background="#000000"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.example.textthread.TabLayout.view.VideoView
+                android:id="@+id/videoview"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <master.flame.danmaku.ui.widget.DanmakuView
+                android:id="@+id/sv_danmaku"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
+        <!--控制面板的布局-->
+        <include layout="@layout/media_controller" android:id="@+id/media_controller"/>
+        <!--缓存提示布局-->
+        <include layout="@layout/ll_buffer" android:id="@+id/ll_buffer"/>
+        <!--加载视频是显示的布局-->
+        <include layout="@layout/ll_loading" android:id="@+id/ll_loading"/>
+    </RelativeLayout>
+    <include layout="@layout/media_content" android:id="@+id/ll_Content" android:visibility="gone"/>
+</LinearLayout>

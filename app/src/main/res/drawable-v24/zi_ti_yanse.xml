@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--true是点击显示的字体颜色-->
+    <item android:state_checked="true" android:color="#FFC0CB" />
+    <!--false是默认，没点击时显示的字体颜色-->
+    <item android:state_checked="false" android:color="#FFFFFF" />
+</selector>

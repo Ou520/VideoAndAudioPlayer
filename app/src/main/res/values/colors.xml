@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="anc_replace_circle_color">#ff818283</color>
+    <color name="Yellow">#FFFF00</color>
+    <color name="Green">#008000</color>
+    <color name="Blue">#1E90FF</color>
+    <color name="Pink">	#FFC0CB</color>
+    <color name="LightGreen">#90EE90</color>
+    <color name="DarkBlue">#00008B</color>
+    <color name="LightBLue">#ADD8E6</color>
+    <color name="Gold">	#FFD700</color>
+    <color name="Purple">#800080</color>
+    <color name="Olive">#808000</color>
+</resources>

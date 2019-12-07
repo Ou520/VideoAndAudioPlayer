@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@drawable/abc1" android:duration="1000"/>
+    <item android:drawable="@drawable/abc2" android:duration="1000"/>
+    <item android:drawable="@drawable/abc3" android:duration="1000"/>
+    <item android:drawable="@drawable/abc4" android:duration="1000"/>
+    <item android:drawable="@drawable/abc5" android:duration="1000"/>
+    <item android:drawable="@drawable/abc6" android:duration="1000"/>
+    <item android:drawable="@drawable/abc7" android:duration="1000"/>
+    <!--android:drawable是图片（图片名字开头必须要有ic_launcher_）-->
+    <!--android:duration是图片切换的时间（单位的毫秒）-->
+    <!--android:oneshot="false"是循环播放，android:oneshot="true"播放一次-->
+</animation-list>

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#99000000"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v4.widget.NestedScrollView
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_width="320dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="编辑"
+                    android:textSize="18dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ToggleButton
+
+                    android:textOff="@null"
+                    android:textOn="@null"
+                    android:text="后台播放"
+                    android:textSize="12dp"
+                    android:textColor="@drawable/zi_ti_yanse"
+                    android:drawableTop="@drawable/tb_hotaibofang"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content" />
+                <ToggleButton
+                    android:layout_weight="1"
+                    android:textOff="@null"
+                    android:textOn="@null"
+                    android:text="音频播放"
+                    android:textSize="12dp"
+                    android:textColor="@drawable/zi_ti_yanse"
+                    android:drawableTop="@drawable/tb_yinpinbofang"
+                    android:background="@android:color/transparent"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content" />
+                <ToggleButton
+
+                    android:textOff="@null"
+                    android:textOn="@null"
+                    android:text="镜像翻转"
+                    android:textSize="12dp"
+                    android:textColor="@drawable/zi_ti_yanse"
+                    android:drawableTop="@drawable/tb_jingxiangfanzhuan"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content" />
+                <ToggleButton
+                    android:textOff="@null"
+                    android:textOn="@null"
+                    android:text="字幕"
+                    android:textSize="12dp"
+                    android:textColor="@drawable/zi_ti_yanse"
+                    android:drawableTop="@drawable/tb_zimu"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content" />
+                <ToggleButton
+
+                    android:textOff="@null"
+                    android:textOn="@null"
+                    android:text="反馈"
+                    android:textSize="12dp"
+                    android:textColor="@drawable/zi_ti_yanse"
+                    android:drawableTop="@drawable/tb_fankui"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_marginTop="30dp"
+                android:background="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <RelativeLayout
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="播放速度"
+                    android:textSize="18dp"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RadioGroup
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:text="0.5"
+                    style="@style/style_RadioButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+                <RadioButton
+                    android:text="0.75"
+                    style="@style/style_RadioButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+                <RadioButton
+                    android:text="1.0"
+                    style="@style/style_RadioButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+                <RadioButton
+                    android:text="1.25"
+                    style="@style/style_RadioButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+                <RadioButton
+                    android:text="1.5"
+                    style="@style/style_RadioButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+                <RadioButton
+                    android:text="2.0"
+                    style="@style/style_RadioButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+            </RadioGroup>
+            <View
+                android:layout_marginTop="30dp"
+                android:background="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <RelativeLayout
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="定时停止播放"
+                    android:textSize="18dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RadioGroup
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <RadioButton
+                    android:text="不开启 "
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="播放当前"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="15分钟"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="30分钟"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RadioGroup>
+            <RadioGroup
+                android:layout_marginTop="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <RadioButton
+                    android:text="60分钟 "
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="自定义"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="   "
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="   "
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RadioGroup>
+            <View
+                android:layout_marginTop="30dp"
+                android:background="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <RelativeLayout
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="播放方式"
+                    android:textSize="18dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RadioGroup
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <RadioButton
+                    android:text="自动连播"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="列表循环"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="单集循环"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="播放暂停"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RadioGroup>
+            <View
+                android:layout_marginTop="30dp"
+                android:background="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <RelativeLayout
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="画面尺寸"
+                    android:textSize="18dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RadioGroup
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <RadioButton
+                    android:text="适应"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="拉伸"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="填充"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="16 : 9"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <RadioButton
+                    android:text="4 : 3"
+                    android:layout_weight="1"
+                    style="@style/style_RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RadioGroup>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@android:color/holo_purple"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ImageViewActivity">
+
+    <com.shehuan.niv.NiceImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:corner_top_left_radius="25dp"
+        app:corner_top_right_radius="10dp"
+        app:corner_bottom_left_radius="60dp"
+        app:corner_bottom_right_radius="25dp"
+        android:src="@drawable/ic_launcher_3"
+        app:border_color="#FF7F24"
+        app:border_width="1dp"
+         />
+    <com.shehuan.niv.NiceImageView
+        android:layout_width="160dp"
+        android:layout_height="280dp"
+        app:corner_radius="25dp"
+        android:layout_marginLeft="50dp"
+        app:border_color="#FF7F24"
+        app:border_width="1dp"
+        android:src="@drawable/abc1"
+        />
+    <!-- android:scaleType="" :设置ImageView里的图片的位置
+        地址：https://github.com/SheHuan/NiceImageView
+         设置圆形 app:is_circle="true"
+        左上角圆角半径 app:corner_top_left_radius="25dp"
+        右上角圆角半径 app:corner_top_right_radius="25dp"
+        左下角圆角半径 app:corner_bottom_left_radius="25dp"
+        右下角圆角半径 app:corner_bottom_right_radius="25dp"
+        统一设置四个角的圆角半径 app:corner_radius="25dp"
+        边框宽度 app:border_color="#FF7F24"
+        边框颜色 app:border_width="10dp"
+        相当于内层边框（is_circle为true时支持）app:inner_border_width="10dp"
+        内边框颜色 app:inner_border_color="@android:color/holo_green_dark"
+        图片上绘制的遮罩颜色 app:mask_color="#55000000"
+        border、inner_border是否覆盖图片内容 app:is_cover_src="true"
+    -->
+</LinearLayout>

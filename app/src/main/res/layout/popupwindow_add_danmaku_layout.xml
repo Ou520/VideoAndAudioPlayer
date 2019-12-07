@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#99000000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/close_Popupwindow"
+            android:layout_width="50dp"
+            android:background="@drawable/bnt_exit_selector"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/et_addDanmaku"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radius_et"
+            android:hint="请输入少于50个字的弹幕！！"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+        <Button
+            android:id="@+id/bnt_sendDanmaku"
+            android:text="发送"
+            android:textSize="15dp"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RadioGroup
+                    android:id="@+id/rg_Size"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/rb_SmallSize"
+                        android:text="小"
+                        style="@style/style_RadioButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+                    <RadioButton
+                        android:id="@+id/rb_BigSize"
+                        android:text="大"
+                        style="@style/style_RadioButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+                </RadioGroup>
+                <RadioGroup
+                    android:id="@+id/rg_Location"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/rb_Top"
+                        android:text="顶"
+                        style="@style/style_RadioButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+                    <RadioButton
+                        android:id="@+id/rb_LR"
+                        android:text="右"
+                        style="@style/style_RadioButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+                    <RadioButton
+                        android:id="@+id/rb_Bottom"
+                        android:text="底"
+                        style="@style/style_RadioButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+                </RadioGroup>
+                <com.example.textthread.TabLayout.view.CircleColorButton
+                    android:id="@+id/iv_color"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+                <Button
+                    android:id="@+id/bnt_Show"
+                    style="@style/style_RadioButton"
+                    android:background="@drawable/ic_jianto"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+            </LinearLayout>
+            <RadioGroup
+                android:id="@+id/rg_Color"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/rb_White"
+                    android:background="@android:color/white"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+                <RadioButton
+                    android:id="@+id/rb_Red"
+                    android:background="@android:color/holo_red_dark"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+                <RadioButton
+                    android:id="@+id/rb_Yellow"
+                    style="@style/style_RadioButton"
+                    android:background="@color/Yellow"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+                <RadioButton
+                    android:id="@+id/rb_Green"
+                    android:background="@color/Green"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+                <RadioButton
+                    android:id="@+id/rb_Blue"
+                    android:background="@color/Blue"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+                <RadioButton
+                    android:id="@+id/rb_Pink"
+                    android:background="@color/Pink"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+                <RadioButton
+                    android:id="@+id/rb_LightGreen"
+                    android:background="@color/LightGreen"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+                <RadioButton
+                    android:id="@+id/rb_DarkBlue"
+                    android:background="@color/DarkBlue"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+                <RadioButton
+                    android:id="@+id/rb_Gold"
+                    android:background="@color/Gold"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+                <RadioButton
+                    android:id="@+id/rb_Purple"
+                    android:background="@color/Purple"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+                <RadioButton
+                    android:id="@+id/rb_LightBLue"
+                    android:background="@color/LightBLue"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+                <RadioButton
+                    android:id="@+id/rb_Olive"
+                    android:background="@color/Olive"
+                    style="@style/style_RadioButton"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+            </RadioGroup>
+    </LinearLayout>
+</LinearLayout>
