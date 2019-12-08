@@ -3,18 +3,21 @@ package com.example.textthread.TabLayout.service;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.provider.MediaStore;
+import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 import com.example.textthread.IMusicPlayerService;
@@ -22,8 +25,12 @@ import com.example.textthread.R;
 import com.example.textthread.TabLayout.activity.SystemAudioPlayer;
 import com.example.textthread.TabLayout.domain.MediaItem;
 import com.example.textthread.TabLayout.utils.CacheUtils;
+
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static android.app.Notification.VISIBILITY_SECRET;
+import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
 
 /*
   使用时要在功能清单文件（AndroidManifest.xml）中注册相应的服务（ Service有自己的生命周期）
@@ -39,7 +46,7 @@ public class MusicPlayerService extends Service {
     private int position;//点击列表item的位置
     private MediaItem mediaItem;//歌曲数据的模型
     private MediaPlayer mediaPlayer;//定义媒体播放器
-    private NotificationManager manager;//定义状态栏通知的管理类，负责发通知、清楚通知等
+    private NotificationManager notificationManager;//定义状态栏通知的管理类，负责发通知、清楚通知等
     private Notification.Builder builder;//定义状态栏通知（Notification：是具体的状态栏通知对象，可以设置icon、文字、提示声音、振动等等参数）
     private RemoteViews remoteViews;
     /*-----------------------播放器的播放模式--------------------------------*/
@@ -242,7 +249,7 @@ public class MusicPlayerService extends Service {
 
         @Override
         public void onPrepared(MediaPlayer mp) {
-            notifyChange(OPENAUDIO);//发广播通知Activity获取数据
+//            notifyChange(OPENAUDIO);//发广播通知Activity获取数据
             start();//开始播放
         }
     }
@@ -275,41 +282,92 @@ public class MusicPlayerService extends Service {
 
 //----------------------------------------播放音乐的方法------------------------------------------------------------------------
 
-    @SuppressLint("NewApi")
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     //开始播放音乐的方法
     private void start(){
         mediaPlayer.start();//开始播放
+        sendNotification();
+    }
+
 
 /*------------------------------------------------设置状态栏通知-----------------------------------------------------------------------*/
+    @SuppressLint("NewApi")
+    private  void sendNotification(){
         //初始化状态栏通知的管理类，NotificationManager是一个系统Service，必须通过getSystemService()方法来获取。
-        manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        //当播放歌曲的时候，在状态显示正在播放，点击的时候，可以进入音乐播放页面
-        Intent intent = new Intent(this, SystemAudioPlayer.class);
-        intent.putExtra("Notification",true);//标识来自状态拦
-       //初始化状态栏通知对象（Notification：是具体的状态栏通知对象）
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        //定义RemoteViews对象，创建视图
-       remoteViews =new RemoteViews("com.example.textthread",R.layout.music_player_notification_item);//为视图绑定自定义的布局文件
-        //设置自定义布局里的控件的属性，先绑定控件，再设置控件的属性
-        remoteViews.setTextViewText(R.id.tv_MusicPlay_Notification_Name,getName());
-        remoteViews.setTextViewText(R.id.tv_MusicPlay_Notification_Artist,getArtist());
+        notificationManager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            //26及以上
+            Toast.makeText(this, "API26及以上的通知", Toast.LENGTH_SHORT).show();
+            NotificationChannel notificationChannel=new NotificationChannel("id","name", IMPORTANCE_DEFAULT);
+            notificationChannel.canBypassDnd();//可否绕过请勿打扰模式
+            notificationChannel.canShowBadge();//桌面lanchener显示角标
+            notificationChannel.enableLights(true);//闪光
+            notificationChannel.shouldShowLights();//闪光
+            notificationChannel.setLockscreenVisibility(VISIBILITY_SECRET);//锁屏显示通知
+            notificationChannel.enableVibration(true);//是否允许震动
+            notificationChannel.setVibrationPattern(new long[]{100,100,200});//设置震动方式（事件长短）
+            notificationChannel.getAudioAttributes();//获取系统响铃配置
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        notificationChannel.getGroup();//获取消息渠道组
+            notificationChannel.setBypassDnd(true);
+            notificationChannel.setDescription("description");
+            notificationChannel.setLightColor(Color.GREEN);//制定闪灯是灯光颜色
+            notificationChannel.setShowBadge(true);
+            notificationManager.createNotificationChannel(notificationChannel);
 
-        //为remoteViews里的按钮设置点击事件（没完成）
-//        Intent intent1 = new Intent("com.Ouwenbin.www.com");
-//        PendingIntent contentIntents = PendingIntent.getBroadcast(this,0,intent1,0);
-//        remoteViews.setOnClickPendingIntent(R.id.bnt_MusicPlayer,contentIntents);
+            //定义RemoteViews对象，创建视图
+            remoteViews =new RemoteViews("com.example.textthread",R.layout.music_player_notification_item);//为视图绑定自定义的布局文件
+            //设置自定义布局里的控件的属性，先绑定控件，再设置控件的属性
+            remoteViews.setTextViewText(R.id.tv_MusicPlay_Notification_Name,getName());
+            remoteViews.setTextViewText(R.id.tv_MusicPlay_Notification_Artist,getArtist());
 
-         builder =new Notification.Builder(this);
-        builder  .setSmallIcon(R.mipmap.ic_launcher_round)//设置通知显示的小图标(一定要设置)
+            Intent intent = new Intent(this, SystemAudioPlayer.class);
+            intent.putExtra("Notification",true);//标识来自状态拦
+            PendingIntent pendingIntent = PendingIntent.getActivity(this,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+            Notification.Builder builder=new Notification.Builder(getApplicationContext(),"id");
+            builder.setSmallIcon(R.mipmap.ic_launcher);
+            builder.setSmallIcon(R.mipmap.ic_launcher_round)//设置通知显示的小图标(一定要设置)
+                    .setCustomContentView(remoteViews)//自定义通知的样式
+                    .setContentIntent(pendingIntent)//设置点击通知后跳转到别的Activity
+                    .setAutoCancel(false);//设置点击通知后，通知是否消失
+            builder.setNumber(3);
+
+            builder.setContentIntent(pendingIntent);
+
+            notificationManager.notify(1,builder.build());
+        }else {
+
+            Toast.makeText(this, "API26及以下的通知", Toast.LENGTH_SHORT).show();
+
+            //定义RemoteViews对象，创建视图
+            remoteViews =new RemoteViews("com.example.textthread",R.layout.music_player_notification_item);//为视图绑定自定义的布局文件
+            //设置自定义布局里的控件的属性，先绑定控件，再设置控件的属性
+            remoteViews.setTextViewText(R.id.tv_MusicPlay_Notification_Name,getName());
+            remoteViews.setTextViewText(R.id.tv_MusicPlay_Notification_Artist,getArtist());
+
+           //为remoteViews里的按钮设置点击事件（没完成）
+////        Intent intent1 = new Intent("com.Ouwenbin.www.com");
+////        PendingIntent contentIntents = PendingIntent.getBroadcast(this,0,intent1,0);
+////        remoteViews.setOnClickPendingIntent(R.id.bnt_MusicPlayer,contentIntents);
+
+
+            Intent intent = new Intent(this, SystemAudioPlayer.class);
+            intent.putExtra("Notification",true);//标识来自状态拦
+            PendingIntent pendingIntent = PendingIntent.getActivity(this,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            builder=new Notification.Builder(this);
+            builder.setSmallIcon(R.mipmap.ic_launcher_round)//设置通知显示的小图标(一定要设置)
                 .setCustomContentView(remoteViews)//自定义通知的样式
                 .setContentIntent(pendingIntent)//设置点击通知后跳转到别的Activity
                 .setAutoCancel(false);//设置点击通知后，通知是否消失
-        manager.notify(1, builder.build());
+            builder.setContentIntent(pendingIntent);
+            notificationManager.notify(1,builder.build());
+        }
 
     }
 
-    //暂停播放音乐的方法
+
+        //暂停播放音乐的方法
     private void pause(){
         mediaPlayer.pause();
     }

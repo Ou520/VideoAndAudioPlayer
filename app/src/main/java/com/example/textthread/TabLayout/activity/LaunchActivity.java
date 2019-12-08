@@ -1,5 +1,6 @@
 package com.example.textthread.TabLayout.activity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,8 +11,14 @@ import android.os.Message;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.textthread.R;
+import com.example.textthread.permission.PermissionUtils;
+import com.example.textthread.permission.request.IRequestPermissions;
+import com.example.textthread.permission.request.RequestPermissions;
+import com.example.textthread.permission.requestresult.IRequestPermissionsResult;
+import com.example.textthread.permission.requestresult.RequestPermissionsResultSetApp;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +35,10 @@ public class LaunchActivity extends Activity {
     private int index=10;
     private Handler handler;
 
+    //调用自己写的IRequestPermissions接口，通过接口调用相应的方法
+    private IRequestPermissions requestPermissions = RequestPermissions.getInstance();//动态权限请求
+    private IRequestPermissionsResult requestPermissionsResult = RequestPermissionsResultSetApp.getInstance();//动态权限请求结果处理
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +49,18 @@ public class LaunchActivity extends Activity {
 
     @SuppressLint("HandlerLeak")
     private void setData() {
+
+        /**
+         * 强制竖屏设置
+         */
+        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        //动态获取系统权限
+        if (!requestPermissions())//判断系统是否已经执行requestPermissions()，如果没有就让他去执行，如果执行了就开始执行别的操作
+        {
+            return;
+        }
         //通过Handler()方法来接收子线程传回来的消息（Message），并在相应的组件上显示
         handler=new Handler(){
             @SuppressLint("NewApi")
@@ -98,6 +121,43 @@ public class LaunchActivity extends Activity {
         if(getRequestedOrientation()!= ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
         {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
+
+    /*-------------动态获取安卓系统的权限，第一步在AndroidManifest.xml里申请相应的权限;第二步是在String[] permissions里给出你申请的权限---------------------*/
+    //请求权限
+    private boolean requestPermissions() {
+        //需要请求的权限
+        String[] permissions = {
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.INTERNET,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_CONTACTS
+        };
+        //开始请求权限
+        return requestPermissions.requestPermissions(
+                this,
+                permissions,
+                PermissionUtils.ResultCode1
+        );
+    }
+    //用户授权操作结果（可能授权了，也可能未授权）
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //用户给APP授权的结果
+        //判断grantResults是否已全部授权，如果是，执行相应操作，如果否，提醒开启权限
+        if (requestPermissionsResult.doRequestPermissionsResult(this, permissions, grantResults)) {
+            //输出授权结果
+            Toast.makeText(this, "授权成功，请开始使用吧！", Toast.LENGTH_LONG).show();
+            //请求的权限全部授权成功，此处可以做自己想做的事了
+//            //加载首页面
+
+        } else {
+            //输出授权结果
+            Toast.makeText(this, "请给APP授权，否则功能无法正常使用！", Toast.LENGTH_LONG).show();
+
         }
     }
 

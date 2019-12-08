@@ -31,7 +31,10 @@ public class NetVideoAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mediaItems.size();
+        if (mediaItems !=null &&mediaItems.size()>0){
+            return mediaItems.size();
+        }
+       return 0;
     }
 
     @Override
