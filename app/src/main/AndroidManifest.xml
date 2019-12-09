@@ -25,6 +25,7 @@
         android:roundIcon="@drawable/ic_launcher_8"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".TabLayout.activity.LaunchActivity">
             <intent-filter>
@@ -353,7 +354,7 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".OkhttpActivity" />
+        <activity android:name=".OkhttpActivity"/>
         <activity android:name=".webViewActivity">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
@@ -361,7 +362,13 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".JsonAsyyncTaskActivity" />
+        <activity android:name=".JsonAsyyncTaskActivity" >
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
         <activity android:name=".ImgShow" />
         <activity android:name=".ImgAsyncTaskActivity">
             <!--<intent-filter>-->

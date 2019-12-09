@@ -28,9 +28,10 @@ import okhttp3.Response;
 
 public class OkhttpActivity extends Activity {
     TextView tvOkHttp;
+    private Callback callback;
 //    Handler handler;
     //(要不域名拿出去，再通过枚举引用过来)
-    String url="http://www.weather.com.cn/data/sk/101010100.html";//定义一个字符串存储网址
+    String url="http://api.m.mtime.cn/PageSubArea/TrailerList.api";//定义一个字符串存储网址
 
     //通过Handler()方法来接收子线程传回来的消息（Message），并在相应的组件上显示
     @SuppressLint("HandlerLeak")
@@ -90,8 +91,8 @@ public class OkhttpActivity extends Activity {
         */
 
 
-        //方法三 OkHttp的回调
-        Callback callback =new Callback() {
+        //OkHttp的回调
+        callback =new Callback() {
             @Override
             //解析失败
             public void onFailure(Call call, IOException e) {
@@ -130,6 +131,8 @@ public class OkhttpActivity extends Activity {
                     .setNegativeButton("否", null)
                     .show();
         }
+
+
 
 
         //方法一

@@ -53,6 +53,7 @@ public class PeopleNearbyFragment extends Fragment {
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout refreshLayout;
 
+    private boolean isLoadMore =false;//是否已经加载更多的数据
     private List<NetAudioData.ListEntity> datas;
     private NetAudioPagerAdapter adapter;
     private View view;
@@ -65,18 +66,29 @@ public class PeopleNearbyFragment extends Fragment {
     }
 
     //构造方法
-    public PeopleNearbyFragment() {
-    }
+    public PeopleNearbyFragment() { }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_people_nearby, container, false);
         unbinder = ButterKnife.bind(this, view);
         initData();
         setListener();
         return view;
+    }
+
+
+
+
+    private void initData() {
+        String savaJson = CacheUtils.getString(getContext(), Constants.ALL_RES_URL);//缓存中获取数据
+        if (!TextUtils.isEmpty(savaJson)) {
+            //解析数据
+            processData(savaJson);
+        }
+        //联网
+        getDataFromNet();
     }
 
     private void setListener() {
@@ -105,24 +117,14 @@ public class PeopleNearbyFragment extends Fragment {
         refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshlayout) {
+                getMoreDataFromNet();
                 Toast.makeText(getContext(), "加载成功！！", Toast.LENGTH_SHORT).show();
                 refreshlayout.finishLoadMore(2000/*,false*/);//传入false表示加载失败
             }
         });
 
-
     }
 
-
-    private void initData() {
-        String savaJson = CacheUtils.getString(getContext(), Constants.ALL_RES_URL);//缓存中获取数据
-        if (!TextUtils.isEmpty(savaJson)) {
-            //解析数据
-            processData(savaJson);
-        }
-        //联网
-        getDataFromNet();
-    }
 
     //获取数据
     private void getDataFromNet() {
@@ -131,7 +133,7 @@ public class PeopleNearbyFragment extends Fragment {
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                LogUtil.e("请求数据成功==" + result);
+//                LogUtil.e("请求数据成功==" + result);
                 //保持数据
                 CacheUtils.putString(getContext(), Constants.ALL_RES_URL, result);//把数据存入缓存中
                 processData(result);//解析数据
@@ -154,11 +156,61 @@ public class PeopleNearbyFragment extends Fragment {
         });
     }
 
+    private void getMoreDataFromNet(){
+        //使用Xutils去请求数据
+        RequestParams params = new RequestParams(Constants.ALL_RES_URL);
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+//                LogUtil.e("请求数据成功==" + result);
+                isLoadMore=true;
+                processData(result);//解析数据
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                LogUtil.e("请求数据失败==" + ex.getMessage());
+                isLoadMore=true;
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                LogUtil.e("onCancelled==" + cex.getMessage());
+                isLoadMore=false;
+            }
+
+            @Override
+            public void onFinished() {
+                LogUtil.e("onFinished");
+                isLoadMore=false;
+            }
+        });
+    }
+
     //解析json数据和显示数据
     private void processData(String json) {
-        NetAudioData data = parsedJson(json);//解析数据
-        datas = data.getList();
+        if(!isLoadMore) {
+            NetAudioData data = parsedJson(json);//解析数据
+            datas = data.getList();
+            showData(datas);////解析完展示数据
+        }else {
+            isLoadMore=false;
+            NetAudioData data = parsedJson(json);//解析数据
+            List<NetAudioData.ListEntity> datas1 = data.getList();
+            datas.addAll(datas1);
+            adapter.notifyDataSetChanged();
+        }
 
+    }
+
+    //Gson解析数据
+    private NetAudioData parsedJson(String json) {
+        return new Gson().fromJson(json, NetAudioData.class);
+    }
+
+
+    //解析完展示数据
+    private void showData(List<NetAudioData.ListEntity> datas) {
         if (datas != null && datas.size() > 0) {
             //有数据
             tvNonet.setVisibility(View.GONE);
@@ -171,14 +223,7 @@ public class PeopleNearbyFragment extends Fragment {
             //没有数据
             tvNonet.setVisibility(View.VISIBLE);
         }
-
         pbLoading.setVisibility(View.GONE);
-
-    }
-
-    //Gson解析数据
-    private NetAudioData parsedJson(String json) {
-        return new Gson().fromJson(json, NetAudioData.class);
     }
 
 
