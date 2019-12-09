@@ -3,6 +3,7 @@
 集成Vitamio和ijkMediaplayer 实现万能解码，支持截取视频第一帧做封面等
 
 * 里面还包含了安卓的其他组件和第三方开源框架的案例
+安装包：[百度网盘](https://pan.baidu.com/s/1BFABWudBi8fxEcsUD7L6iA)  提取码：4j8t 
 
 ### 开发平台：Android Studio 3.3 API：28
 
